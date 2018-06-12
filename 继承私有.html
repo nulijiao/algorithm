@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Father(){
+        this.a = 0;
+        var a = 1;
+        this.find = function(){
+            console.log(a);
+        }
+    }
+    Father.prototype.findpublic = function(){
+        console.log(this.a);
+    }
+    var child = new Father();
+   //  私有属性向外暴露
+    child.find();
+//    利用的是自己方法找不到在父亲的prototype上查找方法原型链的原因
+    child.findpublic();
+//
+</script>
+</body>
+</html>

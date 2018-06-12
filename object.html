@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var parent = Object.create(Object.prototype, {
+        a: {
+            value: 1,
+            writable: true,
+            enumerable: true,
+            configurable: true
+        }
+    });
+
+//    parent继承自Object.prototype，有一个可枚举的属性a。下面我们在创建一个继承自parent的对象child。
+// child继承于parent自己的属性有b可枚举,c不可枚举。输出
+    var child = Object.create(parent, {
+        b: {
+            value: 2,
+            writable: true,
+            enumerable: true,
+            configurable: true
+        },
+        c: {
+            value: 3,
+            writable: true,
+            enumerable: false,
+            configurable: true
+        }
+    });
+ for(var p in child){
+     console.log(p);
+//     输出 b,a首先可以知道在我们了解的for in会输出可枚举的属性以及父元素上的
+ }
+ console.log(child);
+</script>
+</body>
+</html>
